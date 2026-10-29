@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------------------
+# sf-spatial-data-science — local Python environment
+#
+# Covers every module that runs on your own computer (Modules 1-6 and 8).
+# Module 7 runs in Google Colab and installs its own packages there.
+#
+#   Create (first time):   mamba env create -f environment.yml
+#   Update (new module):   mamba env update -f environment.yml --prune
+#   Use it:                conda activate spatial-ds
+#
+# Everything comes from the conda-forge channel so that GDAL, GEOS and PROJ
+# (the C libraries under geopandas, shapely, pyproj and rasterio) are built
+# to match each other. Do NOT `pip install` any geospatial package into this
+# environment — that is the #1 way to break it. Use `mamba install` instead.
+# ---------------------------------------------------------------------------
+name: spatial-ds
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+
+  # Core geospatial stack -----------------------------------------------------
+  - gdal>=3.9            # file formats + reprojection engine
+  - geopandas>=1.0       # pandas DataFrames with a geometry column
+  - pyogrio>=0.10        # fast vector read/write (GeoPackage, GeoJSON, ...)
+  - shapely>=2.0         # geometry operations (GEOS)
+  - pyproj>=3.6          # coordinate reference systems (PROJ)
+  - rasterio>=1.4        # raster read/write            (Module 2)
+  - rioxarray>=0.17      # raster arrays with CRS       (Module 2)
+  - xarray
+
+  # Analysis -------------------------------------------------------------------
+  - numpy
+  - pandas
+  - pyarrow              # fast I/O, GeoParquet         (Module 8)
+  - scipy
+  - scikit-learn         # DBSCAN, clustering           (Modules 3, 6)
+  - pykrige>=1.7         # kriging + variograms         (Module 3)
+  - networkx
+  - osmnx>=2.0           # street networks, isochrones  (Module 4)
+
+  # Visualisation --------------------------------------------------------------
+  - matplotlib
+  - mapclassify          # choropleth classification schemes
+  - contextily           # basemap tiles under matplotlib maps
+  - folium               # interactive Leaflet maps
+  - plotly               # 3D space-time cube           (Module 6)
+
+  # Notebooks + web app --------------------------------------------------------
+  - jupyterlab>=4
+  - ipykernel
+  - streamlit            # dashboard                    (Module 8)
+  - streamlit-folium     # folium maps inside Streamlit (Module 8)
+
+  # Utilities ------------------------------------------------------------------
+  - requests
+  - tabulate             # DataFrame.to_markdown() for README tables
+  - tqdm
+  - pip

@@ -1,0 +1,14 @@
+# Normalise line endings so Windows and Linux (Streamlit Cloud) see the same files.
+* text=auto
+*.py     text eol=lf
+*.ipynb  text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+*.txt    text eol=lf
+
+# Never try to diff or merge these.
+*.png    binary
+*.jpg    binary
+*.gpkg   binary
+*.qgz    binary
+*.parquet binary

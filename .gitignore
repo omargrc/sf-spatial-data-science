@@ -1,0 +1,61 @@
+# =============================================================================
+# sf-spatial-data-science — what git must NEVER pick up
+# GitHub rejects any file over 100 MB, and raw data doesn't belong in a code
+# repo anyway: anyone can rebuild it with  python scripts/download_data.py
+# =============================================================================
+
+# ---- Data folders: keep the folders, ignore their contents -------------------
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# ---- Rasters (elevation, imagery) — always large ----------------------------
+*.tif
+*.tiff
+*.TIF
+*.TIFF
+*.img
+*.ovr
+*.aux.xml
+
+# ---- Shapefiles (every sidecar file) — use GeoPackage instead ---------------
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.qix
+*.shp.xml
+
+# ---- Other bulky or temporary geodata ---------------------------------------
+*.zip
+*.las
+*.laz
+*.gpkg-wal
+*.gpkg-shm
+
+# ---- QGIS backup / lock files -----------------------------------------------
+*.qgs~
+*.qgz~
+*.qgd
+
+# ---- Python / Jupyter -------------------------------------------------------
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# ---- Streamlit secrets (Module 8) -------------------------------------------
+.streamlit/secrets.toml
+
+# ---- Editors and operating systems ------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
